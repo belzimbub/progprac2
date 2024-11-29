@@ -10,7 +10,7 @@ namespace Prag
             int[] mass = new int[N];
             for (int i = 0; i < N; i++)
             {
-                mass[i] = i + 1;
+                    mass[i] = i + 1;
             }
             return mass;
         }
@@ -148,7 +148,7 @@ namespace Prag
             powering,
             squareRoot
         }
-        int DoOperation(Operations op, int a, int b)
+        static int DoOperation(Operations op, int a, int b)
         {
             switch (op)
             {
@@ -158,8 +158,36 @@ namespace Prag
                 default: return 0;
             }
         }
+        public static void fifthtask()
+        {
+            Console.WriteLine("введите числа с которыми вы хотите совершить операцию");
+            int a = Convert.ToInt32(Console.ReadLine());
+            int b = Convert.ToInt32(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("введите желаемую операцию\n division - деление\n powering - возвести первое число в степень равную значению второго числа\n squareRoot - квадратный корень первого числа");
+                string op = Console.ReadLine();
+                switch (op)
+                {
+                    case "division":
+                        Console.WriteLine(DoOperation(Operations.division, a, b));
+                        break;
+                    case "powering":
+                        Console.WriteLine(DoOperation(Operations.powering, a, b));
+                        break;
+                    case "squareRoot":
+                        Console.WriteLine(DoOperation(Operations.squareRoot, a, b));
+                        break;
+                    default:
+                        Console.WriteLine("Введена неверная команда.");
+                        continue;
+                };
+            }
+        }
         static void Main()
         {
+            try
+            {
             Console.WriteLine("Введите размер массива:");
             var N = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Первое задание\n");
@@ -170,6 +198,13 @@ namespace Prag
             MassBublik(N);
             Console.WriteLine("Четвертое задание\n");
             fourthTask(N);
+            Console.WriteLine("Пятое задание\n");
+            fifthtask();
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Пожалуйста, введите допустимое значение.");
+            }
         }
     }
 }
